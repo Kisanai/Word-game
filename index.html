@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Nối Từ</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Game Nối Từ</h1>
+        <div id="menu">
+            <button type="button" id="playWithMachine">Chơi với máy</button>
+            <button type="button" id="playWithFriends">Chơi 2 người</button>
+        </div>
+        <div id="game" style="display:none;">
+            <input type="text" id="wordInput" placeholder="Nhập từ (2 chữ)...">
+            <button type="button" id="submitWord">Gửi từ</button>
+        </div>
+        <div id="message"></div>
+        <div id="currentPlayer" style="display:none;">Lượt của Người Chơi 1</div>
+        <!-- Nút Chơi lại ẩn ban đầu -->
+        <button type="button" id="replayButton" style="display:none;">Chơi lại</button>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
+
