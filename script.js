@@ -56,7 +56,7 @@ document.getElementById('submitWord').addEventListener('click', function() {
 
     // Cập nhật từ cuối cho lượt tiếp theo
     lastWord = words[1]; // Từ cuối (từ thứ hai)
-    displayMessage(`Người Chơi đã nhập '${input}'!`);
+    displayMessage(`Người Chơi ${currentPlayer} đã nhập '${input}'!`);
 
     // Chuyển lượt cho AI nếu chế độ là máy
     if (mode === 'machine') {
@@ -64,7 +64,7 @@ document.getElementById('submitWord').addEventListener('click', function() {
         aiPlay(); // Gọi hàm AI để chơi
     } else {
         // Chuyển lượt cho người chơi khác
-        currentPlayer = 1; // Trở lại lượt của người chơi
+        currentPlayer = currentPlayer === 1 ? 2 : 1; // Chuyển lượt cho người chơi
     }
     
     updateCurrentPlayer();
@@ -130,7 +130,6 @@ function resetGame() {
     updateCurrentPlayer();
 
     // Ẩn nút "Chơi lại"
-    document.getElementById('replayButton').style.display = 'none';
     document.getElementById('wordInput').value = ''; // Xóa nội dung ô nhập
     document.getElementById('menu').style.display = 'block'; // Hiện lại menu
     document.getElementById('game').style.display = 'none'; // Ẩn game
