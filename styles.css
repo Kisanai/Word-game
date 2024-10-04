@@ -11,17 +11,50 @@ body {
 .container {
     text-align: center;
     background: white;
-    padding: 20px;
+    padding: 30px; /* Tăng padding để tạo khoảng cách nhiều hơn */
     border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.2); /* Tăng độ mờ cho bóng */
 }
 
 input {
-    padding: 10px;
-    width: 200px;
+    padding: 12px; /* Tăng padding cho ô nhập */
+    width: 300px; /* Đặt chiều rộng cho ô nhập */
+    font-size: 16px; /* Đảm bảo kích thước chữ phù hợp */
+    border: 1px solid #ccc; /* Thêm viền cho ô nhập */
+    border-radius: 5px; /* Bo góc ô nhập */
+    margin-bottom: 15px; /* Khoảng cách dưới ô nhập */
+}
+
+.button-container {
+    display: flex; /* Sử dụng Flexbox */
+    justify-content: center; /* Căn giữa các nút */
+    margin-top: 15px; /* Khoảng cách giữa ô nhập và nút */
 }
 
 button {
-    padding: 10px 15px;
-    margin-left: 10px;
+    padding: 12px 20px; /* Tăng kích thước nút */
+    font-size: 16px;
+    margin: 0 5px; /* Khoảng cách giữa các nút */
+    cursor: pointer;
+    border: none; /* Xóa viền nút */
+    border-radius: 5px; /* Bo góc nút */
+    background-color: #5cb85c; /* Màu nền cho nút */
+    color: white; /* Màu chữ */
+    transition: background-color 0.3s; /* Hiệu ứng chuyển màu */
+}
+
+button:hover {
+    background-color: #4cae4c; /* Màu khi hover */
+}
+
+button#replayButton {
+    background-color: #f0ad4e; /* Màu nền cho nút "Chơi lại" */
+}
+
+button#replayButton:hover {
+    background-color: #ec971f; /* Màu khi hover cho nút "Chơi lại" */
+}
+
+#message {
+    margin-top: 15px; /* Đảm bảo có khoảng cách giữa thông báo và các phần tử khác */
 }
