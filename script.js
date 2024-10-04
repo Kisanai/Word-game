@@ -2,6 +2,7 @@ let lastWord = '';
 let currentPlayer = 1;
 let gameEnded = false; // Trạng thái trò chơi
 let mode = ''; // Chế độ chơi
+let previousInputs = []; // Mảng lưu trữ các cụm từ đã nhập
 
 // Biến lưu các cụm từ hợp lệ từ file text
 let validPhrases = [];
@@ -32,6 +33,8 @@ function startGame() {
     document.getElementById('game').style.display = 'block';
     document.getElementById('currentPlayer').style.display = 'block';
     updateCurrentPlayer();
+    previousInputs = []; // Reset danh sách cụm từ đã nhập
+    lastWord = ''; // Reset từ cuối
 }
 
 // Xử lý sự kiện khi người chơi gửi từ
@@ -48,15 +51,33 @@ document.getElementById('submitWord').addEventListener('click', function() {
         return;
     }
 
-    // Kiểm tra xem cả cụm từ có trong file validPhrases không
+    // Kiểm tra xem cụm từ đã nhập trước đó
+    if (previousInputs.includes(input)) {
+        endGame(); // Nếu cụm từ đã nhập trước đó, kết thúc trò chơi
+        displayMessage(`Người Chơi ${currentPlayer} thua! Trò chơi kết thúc!`);
+        return;
+    }
+
+    // Kiểm tra xem cụm từ có trong file validPhrases không
     if (!validPhrases.includes(input)) {
         endGame(); // Nếu cụm từ không có, kết thúc trò chơi
+        displayMessage(`Người Chơi ${currentPlayer} thua! Trò chơi kết thúc!`);
+        return;
+    }
+
+    // Kiểm tra xem cụm từ có bắt đầu bằng lastWord không
+    if (lastWord && !input.startsWith(lastWord + ' ')) {
+        displayMessage(`Người Chơi ${currentPlayer} thua! Cụm từ phải bắt đầu bằng '${lastWord}'!`);
+        endGame();
         return;
     }
 
     // Cập nhật từ cuối cho lượt tiếp theo
     lastWord = words[1]; // Từ cuối (từ thứ hai)
     displayMessage(`Người Chơi ${currentPlayer} đã nhập '${input}'!`);
+
+    // Lưu cụm từ đã nhập vào danh sách
+    previousInputs.push(input);
 
     // Chuyển lượt cho AI nếu chế độ là máy
     if (mode === 'machine') {
@@ -129,8 +150,8 @@ function resetGame() {
     displayMessage('');
     updateCurrentPlayer();
 
-    // Ẩn nút "Chơi lại"
-    document.getElementById('wordInput').value = ''; // Xóa nội dung ô nhập
+    // Xóa nội dung ô nhập
+    document.getElementById('wordInput').value = '';
     document.getElementById('menu').style.display = 'block'; // Hiện lại menu
     document.getElementById('game').style.display = 'none'; // Ẩn game
 }
