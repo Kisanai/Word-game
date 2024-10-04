@@ -10,19 +10,18 @@
     <div class="container">
         <h1>Game Nối Từ</h1>
         <div id="menu">
-            <button type="button" id="playWithMachine">Chơi với máy</button>
-            <button type="button" id="playWithFriends">Chơi 2 người</button>
+            <button id="playWithMachine">Chơi với máy</button>
+            <button id="playWithFriends">Chơi 2 người</button>
         </div>
         <div id="game" style="display:none;">
             <input type="text" id="wordInput" placeholder="Nhập từ (2 chữ)...">
             <button type="button" id="submitWord">Gửi từ</button>
+            <!-- Nút Chơi lại bên cạnh nút Gửi từ -->
+            <button id="replayButton" style="display:none;">Chơi lại</button>
         </div>
         <div id="message"></div>
         <div id="currentPlayer" style="display:none;">Lượt của Người Chơi 1</div>
-        <!-- Nút Chơi lại ẩn ban đầu -->
-        <button type="button" id="replayButton" style="display:none;">Chơi lại</button>
     </div>
     <script src="script.js"></script>
 </body>
 </html>
-
